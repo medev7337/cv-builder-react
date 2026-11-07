@@ -1,2 +1,1 @@
-# cv-builder-react
-TOP - CV Application Project
+11/07/2026: Started doing this React project. Seems simple enough, the only issue for me all the time is styling.

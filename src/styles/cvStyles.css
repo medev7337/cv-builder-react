@@ -1,0 +1,55 @@
+#cvHolder {
+  margin-top: 1rem;
+  aspect-ratio: 210 / 297;
+  width: 92.5%;
+  outline: 3px solid black;
+}
+
+#personalDetailsSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: darkgreen;
+  height: 12.5%;
+  gap: 1rem;
+}
+
+#personalDetailsSection > div {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+#mainSectionHolder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.detailsMainSection {
+  width: 90%;
+  margin: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.detailsMainSection h2 {
+  text-align: center;
+  background-color: aqua;
+}
+
+.detailCard {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
+}
+
+.detailCard div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
