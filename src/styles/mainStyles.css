@@ -1,12 +1,131 @@
+:root {
+  /* Primary */
+  --md-primary: #81d99b;
+  --md-on-primary: #00391b;
+  --md-primary-container: #00522a;
+  --md-on-primary-container: #9cf5b5;
+
+  /* Secondary */
+  --md-secondary: #b7ccba;
+  --md-on-secondary: #243529;
+  --md-secondary-container: #394e3e;
+  --md-on-secondary-container: #d3e8d7;
+
+  /* Tertiary */
+  --md-tertiary: #a1cfd3;
+  --md-on-tertiary: #00363a;
+  --md-tertiary-container: #204d52;
+  --md-on-tertiary-container: #bcebf0;
+
+  /* Background */
+  --md-background: #101a15;
+  --md-on-background: #dfe9df;
+
+  /* Surface */
+  --md-surface: #101a15;
+  --md-on-surface: #dfe9df;
+  --md-surface-dim: #101a15;
+  --md-surface-bright: #35443a;
+
+  /* Surface Containers */
+  --md-surface-container-lowest: #0b130e;
+  --md-surface-container-low: #18251d;
+  --md-surface-container: #1c2a21;
+  --md-surface-container-high: #26352b;
+  --md-surface-container-highest: #303f35;
+
+  /* Borders & Dividers */
+  --md-outline: #89988b;
+  --md-outline-variant: #404f43;
+
+  /* Semantic Colors */
+  --md-success: #81d99b;
+  --md-warning: #f4c66a;
+  --md-error: #ffb4ab;
+  --md-info: #9ccaff;
+
+  /* Interactive States */
+  --md-hover: #81d99b14;
+  --md-focus: #81d99b;
+  --md-selected: #00522a;
+  --md-pressed: #81d99b24;
+  --md-disabled: #dfe9df4d;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Primary */
+  --md-primary: #146638;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #c8f0d2;
+  --md-on-primary-container: #002110;
+
+  /* Secondary */
+  --md-secondary: #506457;
+  --md-on-secondary: #ffffff;
+  --md-secondary-container: #d3e8d7;
+  --md-on-secondary-container: #102016;
+
+  /* Tertiary */
+  --md-tertiary: #38656a;
+  --md-on-tertiary: #ffffff;
+  --md-tertiary-container: #bcebf0;
+  --md-on-tertiary-container: #002022;
+
+  /* Background */
+  --md-background: #f7fbf7;
+  --md-on-background: #191d19;
+
+  /* Surface */
+  --md-surface: #f7fbf7;
+  --md-on-surface: #191d19;
+  --md-surface-dim: #d8e2d9;
+  --md-surface-bright: #f7fbf7;
+
+  /* Surface Containers */
+  --md-surface-container-lowest: #ffffff;
+  --md-surface-container-low: #f1f6f1;
+  --md-surface-container: #ebf1eb;
+  --md-surface-container-high: #e5ece6;
+  --md-surface-container-highest: #dfe7e0;
+
+  /* Borders & Dividers */
+  --md-outline: #707970;
+  --md-outline-variant: #bfc9bf;
+
+  /* Semantic Colors */
+  --md-success: #287d46;
+  --md-warning: #8a5b00;
+  --md-error: #ba1a1a;
+  --md-info: #356a9a;
+
+  /* Interactive States */
+  --md-hover: #14663814;
+  --md-focus: #146638;
+  --md-selected: #c8f0d2;
+  --md-pressed: #14663824;
+  --md-disabled: #191d194d;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--md-background);
+  color: var(--md-on-background);
+  font-family: system-ui, sans-serif;
 }
 
 #mainDiv {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
   padding: 1.5rem;
 }
 
@@ -15,9 +134,8 @@
 }
 
 #cvSection {
-  width: 55vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }

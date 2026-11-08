@@ -32,17 +32,24 @@ function DetailCard({ start, end, location, title, details, desc }) {
 }
 
 function Education({ data }) {
-  const ed = data.education[0];
   return (
     <div id="educationSection" className="detailsMainSection">
       <h2>Education</h2>
-      <DetailCard
-        start={ed.start}
-        end={ed.end}
-        location={ed.location}
-        title={ed.school}
-        details={ed.degree}
-      />
+      <ul>
+        {data.education.map((ed) => {
+          return (
+            <li key={crypto.randomUUID()}>
+              <DetailCard
+                start={ed.start}
+                end={ed.end}
+                location={ed.location}
+                title={ed.school}
+                details={ed.degree}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

@@ -1,5 +1,205 @@
-#personalDetailsInput {
+input {
+  outline: none;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: var(--md-outline);
+  opacity: 1;
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+button {
+  font: inherit;
+}
+
+ul {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  list-style: none;
+}
+
+#totalInputScreen {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+#personalDetailsInput {
+  background: var(--md-surface-container);
+  padding: 1.5rem;
+  padding-bottom: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  border: 1px solid var(--md-outline-variant);
+}
+
+#personalDetailsInput > h1 {
+  color: var(--md-on-surface);
+  font-weight: 700;
+  text-align: center;
+}
+
+#personalDetailsInput label {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--md-on-surface);
+}
+
+#personalDetailsInput input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  color: var(--md-on-surface);
+  background: var(--md-surface-container-high);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 0.6rem;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+#personalDetailsInput > input:focus {
+  border-color: var(--md-primary);
+  box-shadow: 0 0 0 3px var(--md-hover);
+}
+
+#educationDetailsSection {
+  width: 100%;
+  padding: 1rem;
+  background: var(--md-surface);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+#educationDetailsSection > button {
+  align-self: center;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  color: var(--md-on-primary);
+  background: var(--md-primary);
+  border: none;
+}
+
+.collapsedForm {
+  padding: 1.5rem;
+  color: var(--md-on-surface);
+  background: var(--md-surface-container-low);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 1rem;
+  gap: 1rem;
+  font-weight: 700;
+}
+
+.educationForm {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  background: var(--md-surface-container);
+  border: 1px solid var(--md-outline-variant);
+}
+
+.labelAndInput > input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  color: var(--md-on-surface);
+  background: var(--md-surface-container-high);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 0.6rem;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.labelAndInput > input:focus {
+  border-color: var(--md-primary);
+  box-shadow: 0 0 0 3px var(--md-hover);
+}
+
+.labelAndInput > label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--md-on-surface);
+}
+
+.educationForm > .dateInputHolder {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.formButtonHolder {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.formButtonHolder button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.formButtonHolder button:active {
+  transform: scale(0.98);
+}
+
+/* Submit */
+.formButtonHolder .submitButton {
+  grid-column: 4;
+  color: var(--md-on-primary);
+  background: var(--md-primary);
+}
+
+.formButtonHolder .submitButton:hover {
+  background: #9cf5b5;
+}
+
+/* Cancel */
+.formButtonHolder .cancelButton {
+  grid-column: 3;
+  color: var(--md-on-surface);
+  background: var(--md-surface-container-highest);
+}
+
+.formButtonHolder .cancelButton:hover {
+  background: var(--md-surface-bright);
+}
+
+/* Delete */
+.formButtonHolder .deleteButton {
+  grid-column: 1;
+  color: #ffffff;
+  background: #ba1a1a;
+}
+
+.formButtonHolder .deleteButton:hover {
+  background: #cf3030;
 }

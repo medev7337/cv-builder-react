@@ -1,7 +1,8 @@
 import { useState } from "react";
 import CV from "./components/CV";
-import PersonalDetails from "./components/Inputs";
+import TotalInputScreen from "./components/Inputs";
 import "./styles/mainStyles.css";
+import "./styles/toggleStyles.css";
 
 function App() {
   const [data, setData] = useState({
@@ -16,6 +17,13 @@ function App() {
         start: "01/2025",
         end: "01/2027",
         location: "Kandy, Sri Lanka",
+      },
+      {
+        school: "Rahula College",
+        degree: "School",
+        start: "01/2018",
+        end: "01/2024",
+        location: "Matara, Sri Lanka",
       },
     ],
     experience: [
@@ -32,9 +40,24 @@ function App() {
   });
 
   return (
-    <div id="mainDiv">
-      <PersonalDetails data={data} setData={setData} />
-      <CV data={data} />
+    <div>
+      <div id="switchHolder">
+        <label class="switch">
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              document.documentElement.dataset.theme = e.target.checked
+                ? "light"
+                : "dark";
+            }}
+          />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div id="mainDiv">
+        <TotalInputScreen data={data} setData={setData} />
+        <CV data={data} />
+      </div>
     </div>
   );
 }
