@@ -51,6 +51,7 @@ function EducationForm({ edId, data, setData, deleteData }) {
           onChange={(e) => {
             updateEd("school", e.target.value);
           }}
+          maxLength={100}
         />
       </div>
 
@@ -63,6 +64,7 @@ function EducationForm({ edId, data, setData, deleteData }) {
           onChange={(e) => {
             updateEd("degree", e.target.value);
           }}
+          maxLength={100}
         />
       </div>
 
@@ -76,6 +78,7 @@ function EducationForm({ edId, data, setData, deleteData }) {
             onChange={(e) => {
               updateEd("start", e.target.value);
             }}
+            maxLength={10}
           />
         </div>
 
@@ -88,6 +91,7 @@ function EducationForm({ edId, data, setData, deleteData }) {
             onChange={(e) => {
               updateEd("end", e.target.value);
             }}
+            maxLength={10}
           />
         </div>
       </div>
@@ -101,6 +105,7 @@ function EducationForm({ edId, data, setData, deleteData }) {
           onChange={(e) => {
             updateEd("location", e.target.value);
           }}
+          maxLength={100}
         />
       </div>
 
@@ -174,21 +179,243 @@ function EducationDetailsSection({ data, setData }) {
 
   return (
     <div id="educationDetailsSection">
-      <ul>
-        {data.education.map((d, i) => {
-          return (
-            <li key={crypto.randomUUID()}>
-              <EducationForm
-                edId={i}
-                data={d}
-                setData={updateEducationData}
-                deleteData={deleteEducationData}
-              />
-            </li>
-          );
-        })}
-      </ul>
-      <button onClick={addEducationData}>+</button>
+      <h1>Education</h1>
+      {data.education.length > 0 && (
+        <ul>
+          {data.education.map((d, i) => {
+            return (
+              <li key={crypto.randomUUID()}>
+                <EducationForm
+                  edId={i}
+                  data={d}
+                  setData={updateEducationData}
+                  deleteData={deleteEducationData}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      <button className="addButton" onClick={addEducationData}>
+        +
+      </button>
+    </div>
+  );
+}
+
+function ExperienceForm({ exId, data, setData, deleteData }) {
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [newEx, setNewEx] = useState({
+    company: data.company,
+    position: data.position,
+    description: data.description,
+    start: data.start,
+    end: data.end,
+    location: data.location,
+  });
+
+  function updateEx(to, val) {
+    const nd = {
+      ...newEx,
+      [to]: val,
+    };
+    setNewEx(nd);
+  }
+
+  function cancelEx() {
+    setNewEx({
+      company: data.company,
+      position: data.position,
+      description: data.description,
+      start: data.start,
+      end: data.end,
+      location: data.location,
+    });
+  }
+
+  function submitEx() {
+    setData(exId, newEx);
+  }
+
+  const collapsedForm = (
+    <div className="collapsedForm" onClick={() => setIsCollapsed(false)}>
+      <p>{data.company}</p>
+    </div>
+  );
+
+  // Returns collapsed if not shown else editable
+  const inputForm = (
+    <form className="experienceForm" onSubmit={(e) => e.preventDefault()}>
+      <div className="labelAndInput">
+        <label htmlFor="experienceCompany">Company</label>
+        <input
+          type="text"
+          id="experienceCompany"
+          defaultValue={newEx.company}
+          onChange={(e) => {
+            updateEx("company", e.target.value);
+          }}
+          maxLength={100}
+        />
+      </div>
+
+      <div className="labelAndInput">
+        <label htmlFor="experienceDetails">Position</label>
+        <input
+          type="text"
+          id="experienceDetails"
+          defaultValue={newEx.position}
+          onChange={(e) => {
+            updateEx("position", e.target.value);
+          }}
+          maxLength={100}
+        />
+      </div>
+
+      <div className="labelAndInput">
+        <label htmlFor="experienceDescription">Description</label>
+        <textarea
+          id="experienceDescription"
+          defaultValue={newEx.description}
+          onChange={(e) => {
+            updateEx("description", e.target.value);
+          }}
+          maxLength={300}
+        />
+      </div>
+
+      <div className="dateInputHolder">
+        <div className="labelAndInput">
+          <label htmlFor="experienceStartDate">Start Date</label>
+          <input
+            type="text"
+            id="experienceStartDate"
+            defaultValue={newEx.start}
+            onChange={(e) => {
+              updateEx("start", e.target.value);
+            }}
+            maxLength={10}
+          />
+        </div>
+
+        <div className="labelAndInput">
+          <label htmlFor="experienceEndDate">End Date</label>
+          <input
+            type="text"
+            id="experienceEndDate"
+            defaultValue={newEx.end}
+            onChange={(e) => {
+              updateEx("end", e.target.value);
+            }}
+            maxLength={10}
+          />
+        </div>
+      </div>
+
+      <div className="labelAndInput">
+        <label htmlFor="experienceLocation">Location</label>
+        <input
+          type="text"
+          id="experienceLocation"
+          defaultValue={newEx.location}
+          onChange={(e) => {
+            updateEx("location", e.target.value);
+          }}
+          maxLength={100}
+        />
+      </div>
+
+      <div className="formButtonHolder">
+        <button
+          type="button"
+          className="deleteButton"
+          onClick={() => {
+            deleteData(exId);
+            setIsCollapsed(true);
+          }}
+        >
+          Delete
+        </button>
+        <button
+          type="button"
+          className="cancelButton"
+          onClick={() => {
+            cancelEx();
+            setIsCollapsed(true);
+          }}
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          className="submitButton"
+          onClick={() => {
+            submitEx();
+            setIsCollapsed(true);
+          }}
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  );
+
+  return isCollapsed ? collapsedForm : inputForm;
+}
+
+function ExperienceDetailsSection({ data, setData }) {
+  function updateExperienceData(exId, newData) {
+    const nd = {
+      ...data,
+    };
+    nd.experience[exId] = newData;
+    setData(nd);
+  }
+
+  function deleteExperienceData(exId) {
+    setData((prev) => ({
+      ...prev,
+      experience: prev.experience.filter((_, index) => index !== exId),
+    }));
+  }
+
+  function addExperienceData() {
+    const nd = {
+      ...data,
+    };
+    nd.experience.push({
+      company: "NEW EX",
+      position: "",
+      description: "",
+      start: "",
+      end: "",
+      location: "",
+    });
+    setData(nd);
+  }
+
+  return (
+    <div id="experienceDetailsSection">
+      <h1>Experience</h1>
+      {data.experience.length > 0 && (
+        <ul>
+          {data.experience.map((d, i) => {
+            return (
+              <li key={crypto.randomUUID()}>
+                <ExperienceForm
+                  exId={i}
+                  data={d}
+                  setData={updateExperienceData}
+                  deleteData={deleteExperienceData}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      <button className="addButton" onClick={addExperienceData}>
+        +
+      </button>
     </div>
   );
 }
@@ -212,6 +439,7 @@ function PersonalDetails({ data, setData }) {
         onChange={(e) => {
           handleChange("fullName", e.target.value);
         }}
+        defaultValue={data.fullName}
       />
       <label htmlFor="emailInput">Email</label>
       <input
@@ -220,6 +448,7 @@ function PersonalDetails({ data, setData }) {
         onChange={(e) => {
           handleChange("email", e.target.value);
         }}
+        defaultValue={data.email}
       />
       <label htmlFor="phoneNumberInput">Phone Number</label>
       <input
@@ -228,6 +457,7 @@ function PersonalDetails({ data, setData }) {
         onChange={(e) => {
           handleChange("phone", e.target.value);
         }}
+        defaultValue={data.phone}
       />
       <label htmlFor="addressInput">Address</label>
       <input
@@ -236,6 +466,7 @@ function PersonalDetails({ data, setData }) {
         onChange={(e) => {
           handleChange("address", e.target.value);
         }}
+        defaultValue={data.address}
       />
     </div>
   );
@@ -246,6 +477,7 @@ function TotalInputScreen({ data, setData }) {
     <div id="totalInputScreen">
       <PersonalDetails data={data} setData={setData} />
       <EducationDetailsSection data={data} setData={setData} />
+      <ExperienceDetailsSection data={data} setData={setData} />
     </div>
   );
 }

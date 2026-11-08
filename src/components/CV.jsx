@@ -55,18 +55,25 @@ function Education({ data }) {
 }
 
 function Experience({ data }) {
-  const ex = data.experience[0];
   return (
     <div id="experienceSection" className="detailsMainSection">
       <h2>Experience</h2>
-      <DetailCard
-        start={ex.start}
-        end={ex.end}
-        location={ex.location}
-        title={ex.company}
-        details={ex.position}
-        desc={ex.description}
-      />
+      <ul>
+        {data.experience.map((ex) => {
+          return (
+            <li key={crypto.randomUUID()}>
+              <DetailCard
+                start={ex.start}
+                end={ex.end}
+                location={ex.location}
+                title={ex.company}
+                details={ex.position}
+                desc={ex.description}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

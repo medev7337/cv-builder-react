@@ -1,4 +1,0 @@
-Need to add form validation to education inputs
-Clean CSS
-add experience functionality
-add button needs styling

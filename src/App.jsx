@@ -1,40 +1,52 @@
 import { useState } from "react";
 import CV from "./components/CV";
 import TotalInputScreen from "./components/Inputs";
+import DownloadPDF from "./components/ExportPDF";
 import "./styles/mainStyles.css";
 import "./styles/toggleStyles.css";
 
 function App() {
   const [data, setData] = useState({
-    fullName: "Your Name",
-    email: "yourmail@email.com",
-    phone: "+94123456789",
-    address: "1234, First Street, Second City",
+    fullName: "Alex Morgan",
+    email: "alex.morgan.dev@gmail.com",
+    phone: "+1 415 555 0138",
+    address: "San Francisco, California, USA",
+
     education: [
       {
-        school: "NIBM",
-        degree: "Computer Science",
-        start: "01/2025",
-        end: "01/2027",
-        location: "Kandy, Sri Lanka",
+        school: "University of California, Berkeley",
+        degree: "B.Sc. Computer Science",
+        start: "09/2019",
+        end: "05/2023",
+        location: "Berkeley, California, USA",
       },
       {
-        school: "Rahula College",
-        degree: "School",
-        start: "01/2018",
-        end: "01/2024",
-        location: "Matara, Sri Lanka",
+        school: "Lincoln High School",
+        degree: "High School Diploma",
+        start: "09/2015",
+        end: "06/2019",
+        location: "San Francisco, California, USA",
       },
     ],
+
     experience: [
       {
-        company: "CD Projekt Red",
-        position: "Game Programmer",
+        company: "Vercel",
+        position: "Senior Software Engineer",
         description:
-          "Game Programmer at CD PROJEKT RED, specializing in gameplay systems and mechanics. Experienced in developing optimized, immersive gameplay features and collaborating with multidisciplinary teams. Passionate about creating engaging player experiences through clean, efficient code.",
-        start: "01/2027",
-        end: "01/2030",
-        location: "Remote From Sri Lanka",
+          "Designed and developed scalable web applications using React, Next.js, and TypeScript. Led frontend architecture improvements, optimized application performance, and collaborated with cross-functional teams to deliver reliable, user-focused products. Contributed to CI/CD workflows and improved developer experience through reusable components and automated tooling.",
+        start: "06/2024",
+        end: "Present",
+        location: "Remote",
+      },
+      {
+        company: "Stripe",
+        position: "Software Engineer",
+        description:
+          "Developed and maintained backend services using Node.js and PostgreSQL. Built REST APIs, improved database query performance, and implemented automated testing to improve system reliability. Worked closely with product designers and engineers to deliver secure and scalable payment solutions.",
+        start: "07/2023",
+        end: "05/2024",
+        location: "San Francisco, California, USA",
       },
     ],
   });
@@ -42,7 +54,7 @@ function App() {
   return (
     <div>
       <div id="switchHolder">
-        <label class="switch">
+        <label className="switch">
           <input
             type="checkbox"
             onChange={(e) => {
@@ -51,8 +63,9 @@ function App() {
                 : "dark";
             }}
           />
-          <span class="slider"></span>
+          <span className="slider"></span>
         </label>
+        <DownloadPDF />
       </div>
       <div id="mainDiv">
         <TotalInputScreen data={data} setData={setData} />
